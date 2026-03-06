@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: youtube-dl-api  # 好きな名前に変えてOK
+    env: python
+    plan: free  # 無料プランを指定
+    region: singapore  # 日本から近いシンガポールを推奨
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.13 # 安定して動くバージョンを指定
